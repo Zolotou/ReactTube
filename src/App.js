@@ -3,7 +3,8 @@ import data from './data';
 import React, { Component } from 'react';
 import CurrentVideo from './Components/CurrentVideo';
 import ListOfVideos from './Components/ListOfVideos';
-import SearchBar from "material-ui-search-bar"
+import SearchBar from "material-ui-search-bar";
+import Button from '@material-ui/core/Button';
 
 
 class App extends Component {
@@ -59,8 +60,8 @@ class App extends Component {
       <div className="App">
         <nav>React Tube</nav>
         <div className="filter">
-        <SearchBar className="input" width="600px" ref={this.inputRef} onChange={(e)=>{this.handleSort(e)}}/>
-          { filter ? <button onClick={()=> {this.showAllVideos()}} className="Show-All-Button">Show All</button> : null}
+        <SearchBar className="input"  ref={this.inputRef} onChange={(e)=>{this.handleSort(e)}}/>
+          { filter ? <Button variant="contained" color="primary" onClick={()=> {this.showAllVideos()}} className="Show-All-Button">Show All</Button> : null}
         </div>
         <div className="wrapper">
         <CurrentVideo movie={pickedMovie} />

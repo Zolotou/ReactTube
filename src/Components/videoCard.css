@@ -1,8 +1,38 @@
 .VideoCard {
-    width: 300px;
+    display: flex;
+    width: 450px;
     margin-left: 30px;
+    margin-bottom: 10px;
+    border: 1px;
+    box-shadow: rgba(0, 0, 0, 0.4) 5px 5px;
+    cursor: pointer;
 }
 
-.videoImage {
-    width: 100%;
+.descriptionName {
+    margin-left: 15px;
 }
+
+.description {
+    max-width: 80%;
+}
+
+.name {
+    font-weight: 600;
+}
+
+
+/* #Video {
+    width: 100px;
+    height: 100px;
+}
+
+.react-player__preview {
+    width: 50%;
+    height: 50%;
+} */
+
+
+/* .VideoPreview {
+    max-width: 10%;
+    max-height: 10%;
+} */

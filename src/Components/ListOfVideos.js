@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 import VideoCard from './videoCard';
 
@@ -12,9 +11,10 @@ class ListOfVideos extends Component {
         return ( 
         
             <div> {
-            data.map((element) =>
-                <VideoCard handleSetMovie = { handleSetMovie } key={element.likeNumber} movie= {element}/>
-            )
+            data.length !== 0 ? data.map((element) =>
+            <VideoCard handleSetMovie = { handleSetMovie } key={element.likeNumber} movie= {element}/>
+        ) : <h2>No movies with such criteria</h2>
+            
         }
         </div>
     )

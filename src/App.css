@@ -3,3 +3,34 @@
     width: 100%;
     justify-content: space-around;
 }
+
+nav {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.App {
+    max-width: 1440px;
+    margin: auto 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 50%;
+    margin-bottom: 30px;
+    padding: 20px;
+    font-size: 1.8rem;
+}
+
+.CurrrentVideo {
+    width: 70%;
+    height: 50%;
+}
+
+.filter {
+    width: 60%;
+    margin-bottom: 20px;
+}

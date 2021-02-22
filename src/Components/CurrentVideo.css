@@ -3,7 +3,26 @@
     height: 200px;
     background-size: cover;*/
 
-.CurrrentVideo {
-    width: 70%;
-    height: 50%;
+.LikeDislike {
+    display: flex;
+}
+
+h5 {
+    overflow-wrap: break-word;
+    width: 80%;
+}
+
+.Current-description {
+    width: 80%;
+}
+
+.LikeDislike {
+    margin-bottom: 20px;
+}
+
+.Comment {
+    background-color: whitesmoke;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 1.5rem;
 }
