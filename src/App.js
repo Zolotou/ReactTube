@@ -1,17 +1,21 @@
 import './App.css';
 import data from './data';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import CurrentVideo from './Components/CurrentVideo';
 import ListOfVideos from './Components/ListOfVideos';
+import SearchBar from "material-ui-search-bar"
+
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
       pickedMovie: data[0],
-      movieNameForSearch : ""
+      movieNameForSearch : "",
+      filter: false,
     };
 
+    this.inputRef = React.createRef();
     this.handleSetMovie2 = this.handleSetMovie.bind(this);
     this.handleSort = this.handleSort.bind(this);
     
@@ -26,23 +30,41 @@ class App extends Component {
   }
 
   handleSort(movieName) {
+    let fill = false;
+    if(!data.every((dat) =>{return dat.name.includes(movieName)})){
+      fill = true; 
+    }
     this.setState({
       ...this.state,
-      movieNameForSearch : movieName
-    })
+      movieNameForSearch : movieName,
+      filter : fill
+    });
+
   }
+
+  showAllVideos(){
+    this.setState({
+      ...this.state,
+      movieNameForSearch: "",
+      filter: false
+    })
+    this.inputRef.current.value = "";
+  }
+
 
   render(){
     const handleSetMovie = this.handleSetMovie2;
-    const { pickedMovie, movieNameForSearch } = this.state;
-    console.log(movieNameForSearch);
+    const { pickedMovie, movieNameForSearch, filter } = this.state;
     return (
       <div className="App">
-        <nav>Navbar name</nav>
+        <nav>React Tube</nav>
+        <div className="filter">
+        <SearchBar className="input" width="600px" ref={this.inputRef} onChange={(e)=>{this.handleSort(e)}}/>
+          { filter ? <button onClick={()=> {this.showAllVideos()}} className="Show-All-Button">Show All</button> : null}
+        </div>
         <div className="wrapper">
-        <input className="input" onChange={(e)=>{this.handleSort(e.target.value)}}></input>
-        <CurrentVideo movie={pickedMovie}/>
-        <ListOfVideos handleSetMovie={handleSetMovie} data={data.filter((oneMovie) =>{return oneMovie.name.includes(movieNameForSearch)})}/>
+        <CurrentVideo movie={pickedMovie} />
+        <ListOfVideos handleSetMovie={handleSetMovie}  data={data.filter((oneMovie) =>{return oneMovie.name.includes(movieNameForSearch)})}/>
         </div>
       </div>
     );
